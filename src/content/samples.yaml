@@ -1,0 +1,46 @@
+# Writing samples, rendered in "Selected work" in ascending `order`.
+# Use the add-sample skill to add one. Rules (see CLAUDE.md):
+# - `summary` describes the product using only public information.
+# - `role` describes what Matthew did in generic terms; no internal processes,
+#   tools, or people.
+
+- id: passport-docs
+  title: Passport documentation
+  product: Passport, a Postman product
+  url: https://docs.usepassport.ai
+  summary: >-
+    Docs for Passport, a secure API access system that lets teams call
+    authenticated APIs without distributing or exposing real secrets.
+  audience: Developers, and the administrators who govern their API access
+  # TODO(matthew): confirm role wording.
+  role: >-
+    I own the documentation end to end: information architecture, writing, and
+    publishing. The site also serves AI agents through an llms.txt index and an
+    MCP server.
+  tools:
+    - Fern
+    - Markdown
+    - Git
+    - AI-assisted writing
+  order: 1
+
+- id: postman-runners
+  title: Monitor internal APIs with runners
+  product: Postman Private API Monitoring
+  url: https://learning.postman.com/docs/monitoring-your-api/runners/overview
+  summary: >-
+    Documentation for Private API Monitoring, which lets enterprise teams run
+    API monitors on runners inside their own network to test internal APIs
+    without exposing them to the public internet.
+  audience: Enterprise teams that need to monitor private APIs securely
+  # TODO(matthew): confirm role wording and which topics you wrote.
+  role: >-
+    I wrote the feature documentation, covering runner setup, Docker
+    deployment, proxy and certificate configuration, and managing runners with
+    the Postman CLI.
+  tools:
+    - Markdown
+    - Git and GitHub
+    - Postman
+    - AI-assisted writing
+  order: 2

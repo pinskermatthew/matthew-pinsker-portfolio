@@ -1,0 +1,9 @@
+/* Placeholder styles for readability during Phase 1.
+   The real design system (tokens, type, color, dark mode) arrives in Phase 2. */
+body {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 1rem;
+  font-family: system-ui, sans-serif;
+  line-height: 1.6;
+}

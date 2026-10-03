@@ -1,0 +1,97 @@
+# Facts about Matthew. Every field renders on the site and (from Phase 3) in
+# llms.txt and structured data. Don't invent facts here; items Matthew still
+# needs to confirm are marked TODO(matthew).
+
+- id: matthew
+  name: Matthew Pinsker
+  headline: Technical writer who builds AI-powered documentation workflows
+  summary: >-
+    I'm a senior technical writer with 7+ years of experience leading developer
+    documentation. I partner with engineering, product, and UX teams from
+    planning to release, test every workflow I document, and use AI to deliver
+    accurate docs faster.
+  links:
+    linkedin: https://www.linkedin.com/in/mpinsker/
+    github: https://github.com/pinskermatthew
+
+  approach:
+    - title: I own the outcome
+      body: >-
+        AI drafts fast. I decide the audience, structure, and what ships, and I
+        check every page for technical accuracy.
+    - title: I build workflows, not one-off prompts
+      body: >-
+        I turn repeatable docs tasks, like style reviews and release updates, into
+        AI skills any teammate can run.
+    - title: I write for people and agents
+      body: >-
+        AI assistants read docs too. I structure content so people and agents can
+        find, parse, and trust it.
+
+  skills:
+    - group: Documentation
+      items:
+        - Developer and API documentation
+        - In-product and UI content
+        - Information architecture
+        - Product and workflow testing
+        - Peer review and mentoring
+    - group: Docs as code
+      items:
+        - Markdown
+        - DITA XML and structured authoring
+        - HTML and CSS
+        - Git and GitHub
+        - Agile workflows
+    - group: Platforms and AI
+      items:
+        - Fern
+        - Postman
+        - Claude Code
+        - AI-assisted writing workflows
+
+  # Newest first. Highlights start with a verb and stay generic (CLAUDE.md, rule 1).
+  experience:
+    - company: Postman
+      location: San Francisco, CA
+      role: Senior Technical Writer
+      start: Jun 2022
+      note: Promoted from Technical Writer in February 2025.
+      highlights:
+        - >-
+          Serve as the primary documentation partner for multiple engineering
+          teams, from planning through release.
+        - >-
+          Test features and workflows while documenting them to catch bugs and
+          usability issues, and to improve technical and in-product content.
+        - >-
+          Guide teammates through peer reviews, testing techniques, and Git
+          workflows.
+    - company: MarkLogic (acquired by Progress Software in 2023)
+      location: San Carlos, CA
+      role: Senior Technical Writer
+      start: Sep 2019
+      end: Jun 2022
+      note: Promoted from Technical Writer in June 2020.
+      highlights:
+        - >-
+          Served as the primary documentation partner for cloud-hosted and
+          on-premises data hub products.
+        - >-
+          Owned the DITA publishing flow, making sure releases were tagged and
+          backed up.
+        - >-
+          Collaborated with engineering and UX teams on in-product content, and
+          mentored an early-career technical writer.
+    - company: MarkLogic
+      location: San Carlos, CA
+      role: Technical Writer Intern
+      start: Jun 2019
+      end: Sep 2019
+      highlights:
+        - >-
+          Owned the Data Hub Service documentation and launched it with the
+          product's first release.
+        - >-
+          Migrated documentation from multiple repositories into a unified DITA
+          XML structure.
