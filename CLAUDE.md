@@ -21,12 +21,15 @@ Requires Node.js 22.12 or later; `.nvmrc` pins the recommended version (24 LTS).
 | `npm run dev` | Start the local dev server at http://localhost:4321. It runs in the background; stop it with `npx astro dev stop`. |
 | `npm run build` | Build the static site to `dist/`. Also validates all content against the schemas. |
 | `npm run preview` | Serve the built site locally |
+| `npm run contrast` | Check that all text colors meet WCAG AA contrast in both themes |
+| `npm run screenshots` | Save full-page screenshots at 360, 768, and 1280px in light and dark mode (needs the dev server and Google Chrome) |
+| `npm run images` | Regenerate the favicon and social share image from `scripts/images/` (needs Google Chrome) |
 
 Run `npm run build` after every change and fix any errors before reporting the task as done.
 
 ## How the site is built
 
-[Astro](https://astro.build) static site, single page, hand-written CSS, no client-side JavaScript.
+[Astro](https://astro.build) static site, single page, hand-written CSS, and minimal client-side JavaScript (theme toggle and back-to-top button only).
 
 | Path | Purpose |
 | --- | --- |
@@ -35,9 +38,11 @@ Run `npm run build` after every change and fix any errors before reporting the t
 | `src/content.config.ts` | Schemas that validate the YAML at build time |
 | `src/pages/index.astro` | The single page; renders the content files |
 | `src/layouts/Base.astro` | HTML document shell and `<head>` metadata |
-| `src/styles/global.css` | Site styles |
-| `public/` | Files served as-is (favicon, robots.txt, and so on) |
-| `docs/` | Project docs: plan, decisions, style guide |
+| `src/components/` | Reusable pieces: `ExternalLink`, `ThemeToggle`, `BackToTop` |
+| `src/styles/global.css` | Site styles. Colors, fonts, and spacing are tokens (CSS custom properties) at the top of the file. |
+| `public/` | Files served as-is. The favicon and `og-image.png` are generated; don't edit them by hand. |
+| `scripts/` | Image generation (`generate-images.sh` and its templates in `scripts/images/`), the contrast check, and the screenshot script |
+| `docs/` | Project docs: plan, decisions, writing style guide (`style-guide.md`), and visual design guide (`design.md`) |
 | `.claude/skills/` | Project skills for routine maintenance |
 
 **Content lives in YAML, not templates.** To change what the site says, edit the files in `src/content/`. Edit `.astro` files only to change structure or presentation. Never hard-code facts about Matthew in a template.
@@ -48,16 +53,22 @@ Run `npm run build` after every change and fix any errors before reporting the t
 2. **Never invent facts.** Don't make up titles, dates, metrics, employers, testimonials, or skills. If something is missing, add a `TODO(matthew):` comment in the YAML and tell Matthew. Before launch, `grep -rn "TODO(matthew)" src` must return nothing.
 3. **Follow the style guide.** All site copy follows [docs/style-guide.md](docs/style-guide.md).
 4. **Keep it a single page.** Don't add pages or routes without asking. `/work/<sample>` case-study pages may come later (see the plan).
-5. **Keep it light.** Don't add client-side JavaScript, UI frameworks, or new dependencies without asking.
-6. **Keep it accessible.** Use semantic HTML, one `<h1>`, ordered heading levels, descriptive link text, and WCAG 2.2 AA color contrast.
-7. **Keep machine-readable outputs in sync.** From Phase 3, `llms.txt`, structured data (JSON-LD), and the sitemap are generated from the content files. Never edit their output by hand.
-8. **Record decisions.** When a change reflects a meaningful choice (stack, structure, hosting, policy), add an entry to `docs/decisions.md`.
+5. **Keep it light.** Don't add new client-side JavaScript, UI frameworks, or dependencies without asking. Any script must be progressive enhancement: the page must still read correctly without it.
+6. **Keep it accessible.** Use semantic HTML, one `<h1>`, ordered heading levels, descriptive link text, and WCAG 2.2 AA color contrast in both light and dark mode.
+7. **Use `ExternalLink` for links to other sites.** It opens them in a new tab, adds the ↗ arrow, and tells screen reader users. Use a plain `<a>` for links within the page.
+8. **Keep the share image in sync.** `scripts/images/og-image.html` repeats the name and headline. If either changes in `profile.yaml`, update the template and run `npm run images`.
+9. **Follow the design guide.** Visual changes follow [docs/design.md](docs/design.md). Use the CSS custom properties in `global.css` for colors, fonts, and spacing, and run `npm run contrast` after any color change.
+10. **Keep machine-readable outputs in sync.** From Phase 3, `llms.txt`, structured data (JSON-LD), and the sitemap are generated from the content files. Never edit their output by hand.
+11. **Record decisions.** When a change reflects a meaningful choice (stack, structure, hosting, policy), add an entry to `docs/decisions.md`.
 
 ## Project skills
 
 | Skill | Use it to |
 | --- | --- |
 | `add-sample` | Add a writing sample to `samples.yaml` by interviewing Matthew |
+| `copy-review` | Review site copy against the style guide and confidentiality rules |
+| `update-experience` | Update experience, skills, or summary after a job change or new skill |
+| `update-design` | Change colors, fonts, spacing, layout, or components, and verify the result |
 
 ## Git
 

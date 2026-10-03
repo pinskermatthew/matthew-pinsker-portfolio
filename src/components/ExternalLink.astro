@@ -1,0 +1,14 @@
+---
+// A link to another site. Opens in a new tab, shows an arrow (styled in
+// global.css), and tells screen reader users that it opens a new tab.
+interface Props {
+  href: string;
+  class?: string;
+}
+
+const { href, class: className } = Astro.props;
+---
+
+<a href={href} class:list={['external-link', className]} target="_blank" rel="noopener noreferrer"
+  ><slot /><span class="visually-hidden"> (opens in a new tab)</span></a
+>

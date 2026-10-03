@@ -12,13 +12,13 @@
     Docs for Passport, a secure API access system that lets teams call
     authenticated APIs without distributing or exposing real secrets.
   audience: Developers, and the administrators who govern their API access
-  # TODO(matthew): confirm role wording.
   role: >-
-    I own the documentation end to end: information architecture, writing, and
-    publishing. The site also serves AI agents through an llms.txt index and an
-    MCP server.
+    I own the docs end to end: information architecture, task-based guides,
+    and the Passport CLI reference. I also maintain the API reference,
+    generated from an OpenAPI spec.
   tools:
     - Fern
+    - OpenAPI
     - Markdown
     - Git
     - AI-assisted writing
@@ -33,7 +33,6 @@
     API monitors on runners inside their own network to test internal APIs
     without exposing them to the public internet.
   audience: Enterprise teams that need to monitor private APIs securely
-  # TODO(matthew): confirm role wording and which topics you wrote.
   role: >-
     I wrote the feature documentation, covering runner setup, Docker
     deployment, proxy and certificate configuration, and managing runners with

@@ -1,9 +1,615 @@
-/* Placeholder styles for readability during Phase 1.
-   The real design system (tokens, type, color, dark mode) arrives in Phase 2. */
+/* Design direction: Editorial.
+   Serif display type, warm paper background, rust accent, and monospace for
+   small metadata like tools and dates. Change colors and fonts through the
+   tokens below, not in individual rules. */
+
+:root {
+  /* Color: light */
+  --color-bg: #faf7f2;
+  --color-text: #1f1d1a;
+  --color-muted: #5c574f;
+  --color-accent: #9a3412;
+  --color-rule: #e2dcd2;
+  --color-chip-bg: #f1ece4;
+
+  /* Type */
+  --font-display: 'Source Serif 4 Variable', Georgia, serif;
+  --font-body: 'Inter Variable', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --text-sm: 0.875rem;
+  --text-base: 1.0625rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.75rem;
+  --text-hero: clamp(2.75rem, 8vw, 4.5rem);
+
+  /* Space and layout */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  --space-xl: 4rem;
+  --measure: 46rem;
+  --gutter: 1rem;
+
+  color-scheme: light dark;
+}
+
+/* Color: dark. Applies when the system prefers dark and the visitor hasn't
+   picked light, or when the visitor picks dark with the theme toggle. Keep the
+   two blocks identical. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --color-bg: #1a1816;
+    --color-text: #ede8e0;
+    --color-muted: #b0a99e;
+    --color-accent: #f0a07a;
+    --color-rule: #3a3530;
+    --color-chip-bg: #262320;
+  }
+}
+
+:root[data-theme='dark'] {
+  --color-bg: #1a1816;
+  --color-text: #ede8e0;
+  --color-muted: #b0a99e;
+  --color-accent: #f0a07a;
+  --color-rule: #3a3530;
+  --color-chip-bg: #262320;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+}
+
+/* Base */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 body {
-  max-width: 44rem;
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--color-accent);
+  text-underline-offset: 0.2em;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* Arrow after every external link. The empty alt text keeps screen readers
+   from announcing it; ExternalLink adds "(opens in a new tab)" instead. */
+.external-link::after {
+  content: ' ↗';
+  content: ' ↗' / '';
+  font-family: var(--font-body);
+  font-size: 0.8em;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.15;
+  margin: 0;
+}
+
+p,
+ul,
+dl {
+  margin: 0;
+}
+
+.container {
+  max-width: calc(var(--measure) + 2 * var(--gutter));
   margin: 0 auto;
-  padding: 1rem;
-  font-family: system-ui, sans-serif;
-  line-height: 1.6;
+  padding: 0 var(--gutter);
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--gutter);
+  top: -3rem;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-text);
+  color: var(--color-bg);
+}
+
+.skip-link:focus {
+  top: var(--space-sm);
+}
+
+/* Header */
+
+/* Phones: name and theme toggle on one row, nav below.
+   Wider screens: name, nav, and toggle on one row. */
+.site-header .container {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    'brand toggle'
+    'nav nav';
+  align-items: center;
+  gap: var(--space-sm) var(--space-md);
+  padding-top: var(--space-md);
+  padding-bottom: var(--space-md);
+}
+
+.brand {
+  grid-area: brand;
+}
+
+.site-nav {
+  grid-area: nav;
+}
+
+.theme-toggle {
+  grid-area: toggle;
+}
+
+@media (min-width: 48rem) {
+  .site-header .container {
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas: 'brand nav toggle';
+  }
+
+  .site-nav ul {
+    justify-content: flex-end;
+  }
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.site-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs) var(--space-md);
+  list-style: none;
+  padding: 0;
+}
+
+.site-nav a {
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+  text-decoration: none;
+}
+
+.site-nav a:hover {
+  color: var(--color-accent);
+}
+
+/* Theme toggle and back-to-top button */
+
+.icon-button {
+  display: inline-grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border: 1px solid var(--color-rule);
+  border-radius: 999px;
+  background: var(--color-bg);
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.icon-button:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.icon-button svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.theme-toggle .icon-sun {
+  display: none;
+}
+
+:root[data-theme='dark'] .theme-toggle .icon-sun {
+  display: block;
+}
+
+:root[data-theme='dark'] .theme-toggle .icon-moon {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .theme-toggle .icon-sun {
+    display: block;
+  }
+
+  :root:not([data-theme='light']) .theme-toggle .icon-moon {
+    display: none;
+  }
+}
+
+.back-to-top {
+  position: fixed;
+  right: var(--gutter);
+  bottom: var(--gutter);
+  width: 3rem;
+  height: 3rem;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.12);
+  text-decoration: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* The rocket lifts and shows its exhaust on hover or keyboard focus. */
+.back-to-top svg {
+  width: 1.9rem;
+  height: 1.9rem;
+  overflow: visible; /* the rocket lifts above the cropped viewBox on hover */
+}
+
+.back-to-top .rocket {
+  transition: transform 0.2s ease-out;
+}
+
+.back-to-top .rocket-exhaust {
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+}
+
+.back-to-top:hover .rocket,
+.back-to-top:focus-visible .rocket {
+  transform: translateY(-2px);
+}
+
+.back-to-top:hover .rocket-exhaust,
+.back-to-top:focus-visible .rocket-exhaust {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .back-to-top,
+  .back-to-top .rocket,
+  .back-to-top .rocket-exhaust {
+    transition: none;
+  }
+
+  .back-to-top:hover .rocket,
+  .back-to-top:focus-visible .rocket {
+    transform: none;
+  }
+}
+
+/* Shared pieces */
+
+.eyebrow {
+  color: var(--color-accent);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.meta {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-muted);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  list-style: none;
+  padding: 0;
+}
+
+.chips li {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--color-muted);
+  background: var(--color-chip-bg);
+  border-radius: 4px;
+  padding: 0.1rem 0.5rem;
+}
+
+/* Sections */
+
+.section {
+  padding-top: var(--space-xl);
+}
+
+.section > .container > h2 {
+  font-size: var(--text-xl);
+  font-weight: 600;
+  border-top: 1px solid var(--color-rule);
+  padding-top: var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+
+/* Hero */
+
+.hero {
+  padding-top: var(--space-xl);
+}
+
+.hero h1 {
+  font-size: var(--text-hero);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin: 0 0 var(--space-md);
+}
+
+.hero .headline {
+  font-size: 1.375rem;
+  font-weight: 500;
+  line-height: 1.4;
+  margin-bottom: var(--space-md);
+}
+
+.hero .summary {
+  color: var(--color-muted);
+  max-width: 38rem;
+}
+
+.hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  list-style: none;
+  padding: 0;
+  margin-top: var(--space-lg);
+  font-weight: 500;
+}
+
+/* Selected work */
+
+.sample + .sample {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-xl);
+  border-top: 1px dashed var(--color-rule);
+}
+
+.sample h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: var(--space-sm) 0 var(--space-md);
+}
+
+.sample h3 a {
+  color: var(--color-text);
+  text-decoration-color: var(--color-accent);
+}
+
+.sample h3 a::after {
+  color: var(--color-accent);
+}
+
+
+
+.sample dl {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: var(--space-sm) var(--space-lg);
+  margin: var(--space-lg) 0;
+  font-size: 0.95rem;
+}
+
+.sample dt {
+  color: var(--color-muted);
+}
+
+.sample dd {
+  margin: 0;
+}
+
+@media (max-width: 30rem) {
+  .sample dl {
+    grid-template-columns: 1fr;
+    row-gap: var(--space-xs);
+  }
+
+  .sample dd + dt {
+    margin-top: var(--space-md);
+  }
+}
+
+/* Approach */
+
+.approach {
+  list-style: none;
+  padding: 0;
+  counter-reset: approach;
+  display: grid;
+  gap: var(--space-lg);
+}
+
+.approach li {
+  counter-increment: approach;
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  column-gap: var(--space-md);
+}
+
+.approach li::before {
+  content: counter(approach, decimal-leading-zero);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-accent);
+  padding-top: 0.35rem;
+  grid-row: span 2;
+}
+
+.approach h3 {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  margin-bottom: var(--space-xs);
+}
+
+.approach p {
+  color: var(--color-muted);
+}
+
+/* Skills */
+
+.skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: var(--space-lg);
+}
+
+.skills h3 {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+}
+
+.skills ul {
+  list-style: none;
+  padding: 0;
+  color: var(--color-muted);
+}
+
+.skills li + li {
+  margin-top: var(--space-xs);
+}
+
+/* Experience: dates sit above the company name on phones and in their own
+   left-hand column on wider screens, so they line up whatever the company
+   name's length. */
+
+.job {
+  display: grid;
+  grid-template-areas:
+    'dates'
+    'company'
+    'details';
+}
+
+.job + .job {
+  margin-top: var(--space-lg);
+}
+
+.job h3 {
+  grid-area: company;
+  font-size: var(--text-lg);
+  font-weight: 600;
+}
+
+.job-dates {
+  grid-area: dates;
+  margin-bottom: var(--space-xs);
+}
+
+.job-details {
+  grid-area: details;
+}
+
+.job .note {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+
+@media (min-width: 40rem) {
+  .job {
+    grid-template-columns: 9rem 1fr;
+    grid-template-areas:
+      'dates company'
+      '. details';
+    column-gap: var(--space-md);
+  }
+
+  .job-dates {
+    margin-bottom: 0;
+    padding-top: 0.3rem;
+  }
+}
+
+.more-link {
+  margin-top: var(--space-lg);
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
+
+/* Contact and footer */
+
+.contact-lead {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  line-height: 1.25;
+  margin-bottom: var(--space-md);
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-lg);
+  list-style: none;
+  padding: 0;
+  font-weight: 500;
+}
+
+.site-footer {
+  margin-top: var(--space-xl);
+  padding: var(--space-lg) 0;
+  border-top: 1px solid var(--color-rule);
+}
+
+/* On narrow screens the footer text can run under the back-to-top button,
+   so leave room for the button below it. */
+@media (max-width: 48rem) {
+  .site-footer {
+    padding-bottom: calc(3rem + 2 * var(--gutter) + var(--space-sm));
+  }
 }

@@ -25,13 +25,19 @@ Status key: `[x]` done, `[ ]` to do.
 
 ## Phase 2: Design and build
 
-- [ ] Agree on the visual direction: color, type, layout
-- [ ] Define design tokens (CSS custom properties), including dark mode
-- [ ] Style all sections; responsive from 360px wide
-- [ ] Add a favicon and social share (Open Graph) image
-- [ ] Accessibility pass: WCAG 2.2 AA, keyboard navigation
-- [ ] Lighthouse score of 95+ in all categories
-- [ ] Add skills: `copy-review`, `update-experience`
+- [x] Agree on the visual direction: color, type, layout ([decision 006](decisions.md#006-editorial-visual-design))
+- [x] Define design tokens (CSS custom properties), including dark mode
+- [x] Style all sections; responsive from 360px wide
+- [x] Add a light/dark toggle, back-to-top button, and new-tab external links ([decision 007](decisions.md#007-minimal-client-side-javascript))
+- [x] Condense the experience section ([decision 008](decisions.md#008-condensed-experience-section))
+- [x] Self-host fonts instead of loading them from Google Fonts ([decision 009](decisions.md#009-self-hosted-fonts-and-inlined-css))
+- [x] Add a favicon and social share (Open Graph) image
+- [x] Accessibility pass: WCAG 2.2 AA contrast, Lighthouse accessibility 100
+- [x] Manual keyboard check: Tab through the page, including the skip link and theme toggle
+- [x] Lighthouse score of 95+ in all categories (mobile: 99/100/100/100; desktop: 100 across the board)
+- [x] Add skills: `copy-review`, `update-experience`
+- [x] Write the visual design guide (`docs/design.md`), add `npm run contrast` and `npm run screenshots`, and add the `update-design` skill
+- [x] Replace the back-to-top arrow with a rocket icon
 
 ## Phase 3: SEO and AEO
 
@@ -50,8 +56,10 @@ Status key: `[x]` done, `[ ]` to do.
 - [ ] Redirect `pinskermatthew.github.io` to the new domain
 - [ ] Set up Google Search Console and Bing Webmaster Tools; submit the sitemap
 - [ ] Add privacy-friendly analytics
+- [ ] Add a space-themed 404 page ("Lost in space") with a link home
 - [ ] Add skill: `pre-publish`
 - [ ] Rewrite the README for employers, including "How this site was built with AI"
+- [ ] Make the repo public and add a "View source" link to it in the footer
 - [ ] Add a resume (HTML and PDF)
 
 ## Phase 5: Expand the portfolio (ongoing)

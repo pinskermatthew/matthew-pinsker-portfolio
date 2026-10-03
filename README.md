@@ -11,6 +11,7 @@ The site is built with [Astro](https://astro.build) and maintained in collaborat
 - [docs/PLAN.md](docs/PLAN.md): the project plan and status
 - [docs/decisions.md](docs/decisions.md): key decisions and why they were made
 - [docs/style-guide.md](docs/style-guide.md): the site's voice and style rules
+- [docs/design.md](docs/design.md): the visual design system: colors, type, spacing, and components
 
 ## Run locally
 
