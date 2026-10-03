@@ -36,6 +36,7 @@ Status key: `[x]` done, `[ ]` to do.
 - [x] Manual keyboard check: Tab through the page, including the skip link and theme toggle
 - [x] Lighthouse score of 95+ in all categories (mobile: 99/100/100/100; desktop: 100 across the board)
 - [x] Add skills: `copy-review`, `update-experience`
+- [x] Write the visual design guide (`docs/design.md`), add `npm run contrast` and `npm run screenshots`, and add the `update-design` skill
 
 ## Phase 3: SEO and AEO
 
