@@ -1,5 +1,8 @@
 ---
 import { getCollection, getEntry } from 'astro:content';
+import BackToTop from '../components/BackToTop.astro';
+import ExternalLink from '../components/ExternalLink.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
 import Base from '../layouts/Base.astro';
 
 const profileEntry = await getEntry('profile', 'matthew');
@@ -10,87 +13,125 @@ const samples = (await getCollection('samples')).sort((a, b) => a.data.order - b
 ---
 
 <Base title={`${profile.name} | Technical Writer`} description={profile.headline}>
-  <header>
-    <a href="#top">{profile.name}</a>
-    <nav aria-label="Main">
-      <ul>
-        <li><a href="#work">Work</a></li>
-        <li><a href="#approach">Approach</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header id="top" class="site-header">
+    <div class="container">
+      <a class="brand" href="#top">{profile.name}</a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#approach">Approach</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <ThemeToggle />
+    </div>
   </header>
 
-  <main id="top">
-    <section id="about" aria-labelledby="about-heading">
-      <h1 id="about-heading">{profile.name}</h1>
-      <p>{profile.headline}</p>
-      <p>{profile.summary}</p>
+  <main id="main">
+    <section class="hero" aria-labelledby="about-heading">
+      <div class="container">
+        <h1 id="about-heading">{profile.name}</h1>
+        <p class="headline">{profile.headline}</p>
+        <p class="summary">{profile.summary}</p>
+        <ul class="hero-links">
+          <li><a href="#work">See my work</a></li>
+          <li><ExternalLink href={profile.links.linkedin}>Contact me on LinkedIn</ExternalLink></li>
+        </ul>
+      </div>
     </section>
 
-    <section id="work" aria-labelledby="work-heading">
-      <h2 id="work-heading">Selected work</h2>
-      {samples.map(({ data }) => (
-        <article>
-          <h3><a href={data.url}>{data.title}</a></h3>
-          <p>{data.product}</p>
-          <p>{data.summary}</p>
-          <dl>
-            <dt>Audience</dt>
-            <dd>{data.audience}</dd>
-            <dt>My role</dt>
-            <dd>{data.role}</dd>
-            <dt>Tools</dt>
-            <dd>{data.tools.join(', ')}</dd>
-          </dl>
-        </article>
-      ))}
+    <section id="work" class="section" aria-labelledby="work-heading">
+      <div class="container">
+        <h2 id="work-heading">Selected work</h2>
+        {samples.map(({ data }) => (
+          <article class="sample">
+            <p class="eyebrow">{data.product}</p>
+            <h3><ExternalLink href={data.url}>{data.title}</ExternalLink></h3>
+            <p>{data.summary}</p>
+            <dl>
+              <dt>Audience</dt>
+              <dd>{data.audience}</dd>
+              <dt>My role</dt>
+              <dd>{data.role}</dd>
+            </dl>
+            <ul class="chips" aria-label="Tools">
+              {data.tools.map((tool) => <li>{tool}</li>)}
+            </ul>
+          </article>
+        ))}
+      </div>
     </section>
 
-    <section id="approach" aria-labelledby="approach-heading">
-      <h2 id="approach-heading">How I work with AI</h2>
-      {profile.approach.map((item) => (
-        <div>
-          <h3>{item.title}</h3>
-          <p>{item.body}</p>
+    <section id="approach" class="section" aria-labelledby="approach-heading">
+      <div class="container">
+        <h2 id="approach-heading">How I work with AI</h2>
+        <ol class="approach">
+          {profile.approach.map((item) => (
+            <li>
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <section id="skills" class="section" aria-labelledby="skills-heading">
+      <div class="container">
+        <h2 id="skills-heading">Skills and tools</h2>
+        <div class="skills">
+          {profile.skills.map((group) => (
+            <div>
+              <h3>{group.group}</h3>
+              <ul>
+                {group.items.map((item) => <li>{item}</li>)}
+              </ul>
+            </div>
+          ))}
         </div>
-      ))}
+      </div>
     </section>
 
-    <section id="skills" aria-labelledby="skills-heading">
-      <h2 id="skills-heading">Skills and tools</h2>
-      {profile.skills.map((group) => (
-        <div>
-          <h3>{group.group}</h3>
-          <ul>
-            {group.items.map((item) => <li>{item}</li>)}
-          </ul>
-        </div>
-      ))}
+    <section id="experience" class="section" aria-labelledby="experience-heading">
+      <div class="container">
+        <h2 id="experience-heading">Experience</h2>
+        {profile.experience.map((job) => (
+          <article class="job">
+            <h3>{job.company}</h3>
+            <p class="meta job-dates">{job.start}–{job.end ?? 'Present'}</p>
+            <div class="job-details">
+              <p>{job.role}</p>
+              {job.note && <p class="note">{job.note}</p>}
+            </div>
+          </article>
+        ))}
+        <p class="more-link">
+          <ExternalLink href={profile.links.linkedin}>Full work history on LinkedIn</ExternalLink>
+        </p>
+      </div>
     </section>
 
-    <section id="experience" aria-labelledby="experience-heading">
-      <h2 id="experience-heading">Experience</h2>
-      {profile.experience.map((job) => (
-        <article>
-          <h3>{job.role}, {job.company}</h3>
-          <p>{job.location} · {job.start}–{job.end ?? 'Present'}</p>
-          {job.note && <p>{job.note}</p>}
-          <ul>
-            {job.highlights.map((item) => <li>{item}</li>)}
-          </ul>
-        </article>
-      ))}
-    </section>
-
-    <section id="contact" aria-labelledby="contact-heading">
-      <h2 id="contact-heading">Contact</h2>
-      <ul>
-        <li><a href={profile.links.linkedin}>LinkedIn</a></li>
-        <li><a href={profile.links.github}>GitHub</a></li>
-      </ul>
+    <section id="contact" class="section" aria-labelledby="contact-heading">
+      <div class="container">
+        <h2 id="contact-heading">Contact</h2>
+        <p class="contact-lead">{profile.contactLead}</p>
+        <ul class="contact-links">
+          <li><ExternalLink href={profile.links.linkedin}>Contact me on LinkedIn</ExternalLink></li>
+          {profile.links.github && <li><ExternalLink href={profile.links.github}>GitHub</ExternalLink></li>}
+        </ul>
+      </div>
     </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="meta">© {new Date().getFullYear()} {profile.name} · Built with Astro and Claude Code</p>
+    </div>
+  </footer>
+
+  <BackToTop />
 </Base>

@@ -48,4 +48,4 @@ Keep each field to about 30 words or fewer. Keep the profile `summary` to two se
 
 ## Experience entries
 
-Each highlight in `experience` in `src/content/profile.yaml` starts with a verb, without "I". Use present tense for a current role and past tense for earlier ones. Keep highlights generic (see CLAUDE.md, rule 1), and use two or three per role.
+One entry per company in `experience` in `src/content/profile.yaml`, newest first. Show the current or final title as `role`, use years only for dates, and summarize promotions in one or two short sentences in `note`. Don't add responsibilities or highlights; the detailed history lives on LinkedIn.

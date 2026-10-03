@@ -12,9 +12,10 @@ const profile = defineCollection({
     name: z.string(),
     headline: z.string(),
     summary: z.string(),
+    contactLead: z.string(),
     links: z.object({
       linkedin: z.string().url(),
-      github: z.string().url(),
+      github: z.string().url().optional(),
     }),
     approach: z.array(
       z.object({
@@ -31,12 +32,10 @@ const profile = defineCollection({
     experience: z.array(
       z.object({
         company: z.string(),
-        location: z.string(),
         role: z.string(),
         start: z.string(),
         end: z.string().optional(),
         note: z.string().optional(),
-        highlights: z.array(z.string()),
       }),
     ),
   }),

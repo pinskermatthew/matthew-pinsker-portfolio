@@ -10,9 +10,9 @@
     documentation. I partner with engineering, product, and UX teams from
     planning to release, test every workflow I document, and use AI to deliver
     accurate docs faster.
+  contactLead: Let's build docs for people and agents.
   links:
     linkedin: https://www.linkedin.com/in/mpinsker/
-    github: https://github.com/pinskermatthew
 
   approach:
     - title: I own the outcome
@@ -50,48 +50,15 @@
         - Claude Code
         - AI-assisted writing workflows
 
-  # Newest first. Highlights start with a verb and stay generic (CLAUDE.md, rule 1).
+  # Newest first. One entry per company; show promotions in `note`. The detailed
+  # history lives on LinkedIn (decision 008).
   experience:
     - company: Postman
-      location: San Francisco, CA
       role: Senior Technical Writer
-      start: Jun 2022
-      note: Promoted from Technical Writer in February 2025.
-      highlights:
-        - >-
-          Serve as the primary documentation partner for multiple engineering
-          teams, from planning through release.
-        - >-
-          Test features and workflows while documenting them to catch bugs and
-          usability issues, and to improve technical and in-product content.
-        - >-
-          Guide teammates through peer reviews, testing techniques, and Git
-          workflows.
-    - company: MarkLogic (acquired by Progress Software in 2023)
-      location: San Carlos, CA
+      start: '2022'
+      note: Promoted from Technical Writer in 2025.
+    - company: MarkLogic (now part of Progress Software)
       role: Senior Technical Writer
-      start: Sep 2019
-      end: Jun 2022
-      note: Promoted from Technical Writer in June 2020.
-      highlights:
-        - >-
-          Served as the primary documentation partner for cloud-hosted and
-          on-premises data hub products.
-        - >-
-          Owned the DITA publishing flow, making sure releases were tagged and
-          backed up.
-        - >-
-          Collaborated with engineering and UX teams on in-product content, and
-          mentored an early-career technical writer.
-    - company: MarkLogic
-      location: San Carlos, CA
-      role: Technical Writer Intern
-      start: Jun 2019
-      end: Sep 2019
-      highlights:
-        - >-
-          Owned the Data Hub Service documentation and launched it with the
-          product's first release.
-        - >-
-          Migrated documentation from multiple repositories into a unified DITA
-          XML structure.
+      start: '2019'
+      end: '2022'
+      note: Joined as an intern in 2019. Promoted to Senior Technical Writer in 2020.
