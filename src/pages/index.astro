@@ -1,0 +1,96 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+
+const profileEntry = await getEntry('profile', 'matthew');
+if (!profileEntry) throw new Error('Missing profile entry "matthew" in src/content/profile.yaml');
+const profile = profileEntry.data;
+
+const samples = (await getCollection('samples')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<Base title={`${profile.name} | Technical Writer`} description={profile.headline}>
+  <header>
+    <a href="#top">{profile.name}</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#approach">Approach</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section id="about" aria-labelledby="about-heading">
+      <h1 id="about-heading">{profile.name}</h1>
+      <p>{profile.headline}</p>
+      <p>{profile.summary}</p>
+    </section>
+
+    <section id="work" aria-labelledby="work-heading">
+      <h2 id="work-heading">Selected work</h2>
+      {samples.map(({ data }) => (
+        <article>
+          <h3><a href={data.url}>{data.title}</a></h3>
+          <p>{data.product}</p>
+          <p>{data.summary}</p>
+          <dl>
+            <dt>Audience</dt>
+            <dd>{data.audience}</dd>
+            <dt>My role</dt>
+            <dd>{data.role}</dd>
+            <dt>Tools</dt>
+            <dd>{data.tools.join(', ')}</dd>
+          </dl>
+        </article>
+      ))}
+    </section>
+
+    <section id="approach" aria-labelledby="approach-heading">
+      <h2 id="approach-heading">How I work with AI</h2>
+      {profile.approach.map((item) => (
+        <div>
+          <h3>{item.title}</h3>
+          <p>{item.body}</p>
+        </div>
+      ))}
+    </section>
+
+    <section id="skills" aria-labelledby="skills-heading">
+      <h2 id="skills-heading">Skills and tools</h2>
+      {profile.skills.map((group) => (
+        <div>
+          <h3>{group.group}</h3>
+          <ul>
+            {group.items.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+      ))}
+    </section>
+
+    <section id="experience" aria-labelledby="experience-heading">
+      <h2 id="experience-heading">Experience</h2>
+      {profile.experience.map((job) => (
+        <article>
+          <h3>{job.role}, {job.company}</h3>
+          <p>{job.location} · {job.start}–{job.end ?? 'Present'}</p>
+          {job.note && <p>{job.note}</p>}
+          <ul>
+            {job.highlights.map((item) => <li>{item}</li>)}
+          </ul>
+        </article>
+      ))}
+    </section>
+
+    <section id="contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Contact</h2>
+      <ul>
+        <li><a href={profile.links.linkedin}>LinkedIn</a></li>
+        <li><a href={profile.links.github}>GitHub</a></li>
+      </ul>
+    </section>
+  </main>
+</Base>
