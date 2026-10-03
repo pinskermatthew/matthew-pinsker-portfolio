@@ -20,7 +20,7 @@ Status key: `[x]` done, `[ ]` to do.
 - [x] Write the style guide, decision log, and this plan
 - [x] Set up the content model (`profile.yaml`, `samples.yaml`) with schemas
 - [x] Create the `add-sample` skill
-- [ ] Upgrade local Node.js to 22.12 or later, install, and build
+- [x] Upgrade local Node.js to 22.12 or later, install, and build
 - [ ] Matthew reviews and resolves `TODO(matthew)` items in `src/content/`
 
 ## Phase 2: Design and build

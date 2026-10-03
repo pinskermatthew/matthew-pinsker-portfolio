@@ -18,7 +18,7 @@ Requires Node.js 22.12 or later; `.nvmrc` pins the recommended version (24 LTS).
 | Command | What it does |
 | --- | --- |
 | `npm install` | Install dependencies |
-| `npm run dev` | Start the local dev server at http://localhost:4321 |
+| `npm run dev` | Start the local dev server at http://localhost:4321. It runs in the background; stop it with `npx astro dev stop`. |
 | `npm run build` | Build the static site to `dist/`. Also validates all content against the schemas. |
 | `npm run preview` | Serve the built site locally |
 
