@@ -53,7 +53,7 @@ Run `npm run build` after every change and fix any errors before reporting the t
 4. **Keep it a single page.** Don't add pages or routes without asking. `/work/<sample>` case-study pages may come later (see the plan).
 5. **Keep it light.** Don't add new client-side JavaScript, UI frameworks, or dependencies without asking. Any script must be progressive enhancement: the page must still read correctly without it.
 6. **Keep it accessible.** Use semantic HTML, one `<h1>`, ordered heading levels, descriptive link text, and WCAG 2.2 AA color contrast in both light and dark mode.
-7. **Use `ExternalLink` for links to other sites.** It opens them in a new tab and tells screen reader users. Use a plain `<a>` for links within the page.
+7. **Use `ExternalLink` for links to other sites.** It opens them in a new tab, adds the ↗ arrow, and tells screen reader users. Use a plain `<a>` for links within the page.
 8. **Keep the share image in sync.** `scripts/images/og-image.html` repeats the name and headline. If either changes in `profile.yaml`, update the template and run `npm run images`.
 9. **Style with tokens.** Use the CSS custom properties in `global.css` for colors, fonts, and spacing. When you change a dark-mode color, update both dark-mode blocks.
 10. **Keep machine-readable outputs in sync.** From Phase 3, `llms.txt`, structured data (JSON-LD), and the sitemap are generated from the content files. Never edit their output by hand.

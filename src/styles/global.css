@@ -103,6 +103,15 @@ a:hover {
   text-decoration-thickness: 2px;
 }
 
+/* Arrow after every external link. The empty alt text keeps screen readers
+   from announcing it; ExternalLink adds "(opens in a new tab)" instead. */
+.external-link::after {
+  content: ' ↗';
+  content: ' ↗' / '';
+  font-family: var(--font-body);
+  font-size: 0.8em;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -391,11 +400,10 @@ dl {
 }
 
 .sample h3 a::after {
-  content: ' ↗';
   color: var(--color-accent);
-  font-family: var(--font-body);
-  font-size: 0.8em;
 }
+
+
 
 .sample dl {
   display: grid;
@@ -563,4 +571,12 @@ dl {
   margin-top: var(--space-xl);
   padding: var(--space-lg) 0;
   border-top: 1px solid var(--color-rule);
+}
+
+/* On narrow screens the footer text can run under the back-to-top button,
+   so leave room for the button below it. */
+@media (max-width: 48rem) {
+  .site-footer {
+    padding-bottom: calc(2.75rem + 2 * var(--gutter) + var(--space-sm));
+  }
 }

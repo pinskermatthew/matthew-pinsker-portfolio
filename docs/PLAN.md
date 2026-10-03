@@ -33,7 +33,7 @@ Status key: `[x]` done, `[ ]` to do.
 - [x] Self-host fonts instead of loading them from Google Fonts ([decision 009](decisions.md#009-self-hosted-fonts-and-inlined-css))
 - [x] Add a favicon and social share (Open Graph) image
 - [x] Accessibility pass: WCAG 2.2 AA contrast, Lighthouse accessibility 100
-- [ ] Manual keyboard check: Tab through the page, including the skip link and theme toggle
+- [x] Manual keyboard check: Tab through the page, including the skip link and theme toggle
 - [x] Lighthouse score of 95+ in all categories (mobile: 99/100/100/100; desktop: 100 across the board)
 - [x] Add skills: `copy-review`, `update-experience`
 
