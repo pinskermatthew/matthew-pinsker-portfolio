@@ -1,11 +1,17 @@
 ---
-// Floating "back to top" button. Appears once the visitor scrolls past the
-// first screen of the page.
+// Floating "back to top" button, drawn as a small rocket (a nod to Matthew's
+// interest in space). Appears once the visitor scrolls past the first screen;
+// on hover or focus the rocket lifts and its exhaust shows.
 ---
 
 <a class="icon-button back-to-top" href="#top" aria-label="Back to top">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <path d="M12 19V5M5 12l7-7 7 7"></path>
+  <svg viewBox="4.5 1.5 15 21" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <g class="rocket">
+      <path d="M12 2.5c2.8 2.6 4 6.3 3.6 12.5H8.4C8 8.8 9.2 5.1 12 2.5z"></path>
+      <circle cx="12" cy="9" r="1.6"></circle>
+      <path d="M8.4 11.5 5.5 14.5v3l3-2.5M15.6 11.5l2.9 3v3l-3-2.5"></path>
+      <path class="rocket-exhaust" d="M12 17.8c-.9 1.2-1.1 2.4 0 3.9 1.1-1.5.9-2.7 0-3.9z"></path>
+    </g>
   </svg>
 </a>
 

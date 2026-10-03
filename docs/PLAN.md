@@ -37,6 +37,7 @@ Status key: `[x]` done, `[ ]` to do.
 - [x] Lighthouse score of 95+ in all categories (mobile: 99/100/100/100; desktop: 100 across the board)
 - [x] Add skills: `copy-review`, `update-experience`
 - [x] Write the visual design guide (`docs/design.md`), add `npm run contrast` and `npm run screenshots`, and add the `update-design` skill
+- [x] Replace the back-to-top arrow with a rocket icon
 
 ## Phase 3: SEO and AEO
 
@@ -55,6 +56,7 @@ Status key: `[x]` done, `[ ]` to do.
 - [ ] Redirect `pinskermatthew.github.io` to the new domain
 - [ ] Set up Google Search Console and Bing Webmaster Tools; submit the sitemap
 - [ ] Add privacy-friendly analytics
+- [ ] Add a space-themed 404 page ("Lost in space") with a link home
 - [ ] Add skill: `pre-publish`
 - [ ] Rewrite the README for employers, including "How this site was built with AI"
 - [ ] Make the repo public and add a "View source" link to it in the footer

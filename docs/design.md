@@ -5,6 +5,7 @@ How matthewpinsker.com looks, and the rules for changing it. The tokens live at 
 ## Principles
 
 - **Editorial, not decorative.** Typography and spacing do the work. No gradients, shadows (except the back-to-top button), or illustrations.
+- **Personality in small doses.** One or two small, functional touches, like the rocket back-to-top button. Never in the way of the content, and never in headings or work copy.
 - **Content first.** Design never competes with the samples and the writing.
 - **Accessible in both themes.** Every change works in light and dark mode, at every width, with a keyboard.
 
@@ -96,13 +97,13 @@ The site is designed phone-first. Test at 360, 768, and 1280px wide.
 | Experience entry | Experience | Dates (monospace), company (serif), role, optional note. Dates stay aligned whatever the company name's length. |
 | Tool tag | Sample cards | Monospace, muted text on `--color-chip-bg`, 4px radius |
 | External link | Everywhere | `ExternalLink` component: opens a new tab, adds a ↗ arrow, announces "(opens in a new tab)" to screen readers |
-| Icon button | Theme toggle, back-to-top | Round, 1px `--color-rule` border, turns accent on hover |
+| Icon button | Theme toggle, back-to-top | Round, 1px `--color-rule` border, turns accent on hover. The back-to-top icon is a small line-drawn rocket, the site's one touch of personality (a nod to Matthew's interest in space). |
 
 ## Interaction and accessibility
 
 - Every link and button shows a 2px accent outline on keyboard focus.
 - The first Tab press reveals a "Skip to content" link.
-- Motion is limited to smooth scrolling and the back-to-top fade, and both turn off when the visitor prefers reduced motion.
+- Motion is limited to smooth scrolling, the back-to-top fade, and the rocket's 2px lift on hover or focus. All of it turns off when the visitor prefers reduced motion; the rocket's flame still appears, without movement.
 - Scripts are progressive enhancement: without JavaScript, the page renders fully and follows the system theme.
 
 ## Generated assets

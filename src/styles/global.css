@@ -277,8 +277,8 @@ dl {
   position: fixed;
   right: var(--gutter);
   bottom: var(--gutter);
-  width: 2.75rem;
-  height: 2.75rem;
+  width: 3rem;
+  height: 3rem;
   box-shadow: 0 2px 8px rgb(0 0 0 / 0.12);
   text-decoration: none;
   opacity: 0;
@@ -291,9 +291,42 @@ dl {
   visibility: visible;
 }
 
+/* The rocket lifts and shows its exhaust on hover or keyboard focus. */
+.back-to-top svg {
+  width: 1.9rem;
+  height: 1.9rem;
+  overflow: visible; /* the rocket lifts above the cropped viewBox on hover */
+}
+
+.back-to-top .rocket {
+  transition: transform 0.2s ease-out;
+}
+
+.back-to-top .rocket-exhaust {
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+}
+
+.back-to-top:hover .rocket,
+.back-to-top:focus-visible .rocket {
+  transform: translateY(-2px);
+}
+
+.back-to-top:hover .rocket-exhaust,
+.back-to-top:focus-visible .rocket-exhaust {
+  opacity: 1;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .back-to-top {
+  .back-to-top,
+  .back-to-top .rocket,
+  .back-to-top .rocket-exhaust {
     transition: none;
+  }
+
+  .back-to-top:hover .rocket,
+  .back-to-top:focus-visible .rocket {
+    transform: none;
   }
 }
 
@@ -577,6 +610,6 @@ dl {
    so leave room for the button below it. */
 @media (max-width: 48rem) {
   .site-footer {
-    padding-bottom: calc(2.75rem + 2 * var(--gutter) + var(--space-sm));
+    padding-bottom: calc(3rem + 2 * var(--gutter) + var(--space-sm));
   }
 }
