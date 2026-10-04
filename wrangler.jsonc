@@ -1,7 +1,8 @@
 // Cloudflare Workers configuration (decision 012). The site is fully static, so
 // there's no Worker code: Cloudflare serves the files Astro builds into dist/.
-// Workers Builds runs `npm run build` and then `npx wrangler deploy` on every
-// push. The Worker name in the Cloudflare dashboard must match `name` below.
+// Workers Builds runs `npm run build`, then `npx wrangler deploy` for main or
+// `npx wrangler preview` for other branches. The Worker name in the Cloudflare
+// dashboard must match `name` below.
 {
   "name": "matthew-pinsker-portfolio",
   "compatibility_date": "2026-10-04",
@@ -14,5 +15,8 @@
   // tags point search engines to matthewpinsker.com, so it isn't a duplicate.
   "workers_dev": true,
   // Build a preview URL for every non-production branch (every pull request).
-  "preview_urls": true
+  "preview_urls": true,
+  // Required by `wrangler preview`, the command Workers Builds runs for
+  // non-production branches. Empty because previews need no separate settings.
+  "previews": {}
 }
