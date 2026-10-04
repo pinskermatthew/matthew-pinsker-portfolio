@@ -6,7 +6,7 @@ The repo is part of the portfolio. It shows how I plan, write, and maintain a do
 
 ## How this site was built with AI
 
-I built this site with [Claude Code](https://claude.com/claude-code). I set the direction, approved every piece of content, and made every design and policy decision. Claude Code drafted content and docs for my review, implemented the changes, and ran the checks. Commits made together carry a `Co-Authored-By` line.
+I built this site with [Claude Code](https://claude.com/claude-code). I set the direction, approved every piece of content, and made every design and policy decision. Claude Code drafted content and docs for my review, implemented the changes, and ran the checks.
 
 What makes that collaboration reliable:
 
