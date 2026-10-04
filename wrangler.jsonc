@@ -9,5 +9,10 @@
     "directory": "./dist",
     // Serve dist/404.html, the "Lost in space" page, for unknown URLs.
     "not_found_handling": "404-page"
-  }
+  },
+  // Keep the *.workers.dev address on; preview URLs depend on it. Canonical
+  // tags point search engines to matthewpinsker.com, so it isn't a duplicate.
+  "workers_dev": true,
+  // Build a preview URL for every non-production branch (every pull request).
+  "preview_urls": true
 }
