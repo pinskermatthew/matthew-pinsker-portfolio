@@ -43,6 +43,7 @@ A content change updates all of them on the next build.
 | `update-experience` | Updates roles, promotions, and skills, and flags related text to change |
 | `update-design` | Makes visual changes through design tokens, then checks contrast, screenshots, and Lighthouse |
 | `seo-aeo-audit` | Checks how search engines and AI agents see the site, and fixes problems at the source |
+| `pre-publish` | Runs the final checks before a merge to `main` publishes the site, then drafts the commit and PR text |
 
 ## Project docs
 
@@ -73,6 +74,12 @@ The site runs at http://localhost:4321. Stop the dev server with `npx astro dev 
 | `npm run contrast` | Check text contrast against WCAG 2.2 AA in both themes |
 | `npm run screenshots` | Save full-page screenshots at three widths in both themes (needs the dev server and Google Chrome) |
 | `npm run images` | Regenerate the favicon and social share image (needs Google Chrome) |
+
+## Deployment and CI
+
+- **Hosting:** [Cloudflare Workers](https://developers.cloudflare.com/workers/static-assets/) serves the built site as static files. The config is in [wrangler.jsonc](wrangler.jsonc).
+- **Deploys:** Cloudflare Workers Builds deploys every merge to `main` to matthewpinsker.com, and builds a preview URL for every other branch, so each pull request can be reviewed on a real URL before merging.
+- **CI:** [GitHub Actions](.github/workflows/ci.yml) runs on every pull request: it builds the site, validates the content, and runs the metadata, contrast, and broken-link checks.
 
 ## Built with
 

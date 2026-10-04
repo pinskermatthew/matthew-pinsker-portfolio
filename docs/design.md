@@ -98,12 +98,13 @@ The site is designed phone-first. Test at 360, 768, and 1280px wide.
 | Tool tag | Sample cards | Monospace, muted text on `--color-chip-bg`, 4px radius |
 | External link | Everywhere | `ExternalLink` component: opens a new tab, adds a ↗ arrow, announces "(opens in a new tab)" to screen readers |
 | Icon button | Theme toggle, back-to-top | Round, 1px `--color-rule` border, turns accent on hover. The back-to-top icon is a small line-drawn rocket, the site's one touch of personality (a nod to Matthew's interest in space). |
+| 404 page | `/404.html` | Centered: a large rocket drifting among accent-colored stars, a monospace "404", the hero-size heading "Lost in space", and a link home. The rocket stops drifting for reduced-motion visitors. |
 
 ## Interaction and accessibility
 
 - Every link and button shows a 2px accent outline on keyboard focus.
 - The first Tab press reveals a "Skip to content" link.
-- Motion is limited to smooth scrolling, the back-to-top fade, and the rocket's 2px lift on hover or focus. All of it turns off when the visitor prefers reduced motion; the rocket's flame still appears, without movement.
+- Motion is limited to smooth scrolling, the back-to-top fade, the rocket's 2px lift on hover or focus, and the 404 rocket's slow drift. All of it turns off when the visitor prefers reduced motion; the rocket's flame still appears, without movement.
 - Scripts are progressive enhancement: without JavaScript, the page renders fully and follows the system theme.
 
 ## Generated assets

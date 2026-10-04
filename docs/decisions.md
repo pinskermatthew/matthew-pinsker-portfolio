@@ -89,3 +89,11 @@ A log of meaningful project decisions and the reasons for them. Newest last.
 **Decision:** Don't publish a resume PDF. The experience section and LinkedIn cover the work history.
 
 **Why:** The experience section already shows the companies, titles, and dates, and LinkedIn has the detail. Recruiters who want a resume will ask, and Matthew can send one tailored to the role. A public PDF would be one more document to keep in sync, and one more place for personal contact details on the public web.
+
+## 012: Host on Cloudflare
+
+**Date:** 2026-10-04
+
+**Decision:** Host the site on Cloudflare Workers as static assets, at `matthewpinsker.com`. Cloudflare Workers Builds deploys every merge to `main` and builds a preview URL for every other branch. GitHub Actions runs the checks on every pull request. The repo goes public before launch.
+
+**Why:** The domain and its DNS are already at Cloudflare, so connecting the domain takes a few clicks. Preview URLs let Matthew review each pull request on a real URL before merging, which GitHub Pages can't do: its default github.io address breaks the site's root-relative paths. Hosting is free for a static site, with unlimited bandwidth, and Cloudflare Web Analytics is available without adding code to the repo. GitHub Pages was considered, to keep code and hosting in one place; it's a good fallback, and moving between them only means changing the deploy setup and DNS.

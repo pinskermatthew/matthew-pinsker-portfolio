@@ -11,9 +11,11 @@ interface Props {
   description: string;
   /** JSON-LD for the page, built in src/lib/structured-data.ts. */
   structuredData?: object;
+  /** Keep the page out of search results (for the 404 page). */
+  noindex?: boolean;
 }
 
-const { title, description, structuredData } = Astro.props;
+const { title, description, structuredData, noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 
@@ -24,9 +26,9 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
+    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
     <link rel="preload" href={headingFontUrl} as="font" type="font/woff2" crossorigin />
-    <link rel="alternate" type="text/markdown" href="/index.md" title="This page as Markdown" />
+    {!noindex && <link rel="alternate" type="text/markdown" href="/index.md" title="This page as Markdown" />}
 
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" href="/favicon-32.png" type="image/png" />

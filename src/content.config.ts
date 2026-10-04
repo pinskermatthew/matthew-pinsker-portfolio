@@ -18,6 +18,8 @@ const profile = defineCollection({
     links: z.object({
       linkedin: z.string().url(),
       github: z.string().url().optional(),
+      // This site's source code, linked from the footer.
+      source: z.string().url().optional(),
     }),
     approach: z.array(
       z.object({

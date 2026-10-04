@@ -52,9 +52,33 @@ Status key: `[x]` done, `[ ]` to do.
 
 ## Phase 4: Launch
 
-- [ ] Choose hosting (favorite: GitHub Pages with a GitHub Actions deploy)
-- [ ] CI: build, link check, and HTML validation on every PR
-- [ ] Point `matthewpinsker.com` DNS at the host and enforce HTTPS
+Hosting: Cloudflare Workers, with preview URLs for every branch; the repo goes public before launch ([decision 012](decisions.md#012-host-on-cloudflare)).
+
+### Part 1: Repo work
+
+- [x] Cloudflare config (`wrangler.jsonc`): serve `dist/` as static assets, with the 404 page
+- [x] CI on every pull request: build, `check:metadata`, contrast, and broken-link check (`.github/workflows/ci.yml`)
+- [x] Add a space-themed 404 page ("Lost in space") with a link home
+- [x] Add a "View source" link to the repo in the footer
+- [ ] Decide on analytics (Cloudflare Web Analytics can be turned on in the dashboard, with no code in the repo)
+- [x] Add skill: `pre-publish`
+- [x] Rewrite the README for employers, including "How this site was built with AI"
+- [x] Add deployment and CI details to the README
+
+### Part 2: Pre-public review
+
+- [ ] Scan current files and full commit history for personal details, internal employer information, and secrets; Matthew reviews anything flagged
+
+### Part 3: Go live
+
+- [ ] Merge to `main` and make the repo public
+- [ ] In Cloudflare, create the Worker from the GitHub repo (Workers Builds) and confirm the first deploy and a preview URL work
+- [ ] Remove the temporary domain and repo-link exclusions from the link check in `.github/workflows/ci.yml`
+- [ ] Add `matthewpinsker.com` as a custom domain on the Worker, redirect `www.matthewpinsker.com` to it with a Cloudflare redirect rule, and confirm HTTPS
+- [ ] Check the live site: Lighthouse, `check:metadata`, Rich Results Test, and Schema.org validator
+
+### Part 4: After launch
+
 - [ ] Redirect `pinskermatthew.github.io` to the new domain
 - [ ] Set up Google Search Console and Bing Webmaster Tools; submit the sitemap
 - [ ] Align off-site profiles so search engines and AI agents connect them to the site (search for "Matthew Pinsker" mostly returns a historian of the same name):
@@ -62,12 +86,6 @@ Status key: `[x]` done, `[ ]` to do.
   - [ ] GitHub profile: add "technical writer," a short bio, and the site link
   - [ ] Add any other public profiles or author pages to `links` in `profile.yaml` so structured data lists them
   - [ ] After a few weeks, ask an AI assistant with web search "Who is Matthew Pinsker, the technical writer?" and compare the answer with the site
-- [ ] Add privacy-friendly analytics
-- [ ] Add a space-themed 404 page ("Lost in space") with a link home
-- [ ] Add skill: `pre-publish`
-- [x] Rewrite the README for employers, including "How this site was built with AI"
-- [ ] Add deployment and CI details to the README once they exist
-- [ ] Make the repo public and add a "View source" link to it in the footer
 
 ## Phase 5: Expand the portfolio (ongoing)
 
