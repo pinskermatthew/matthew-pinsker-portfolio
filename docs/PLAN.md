@@ -65,7 +65,8 @@ Status key: `[x]` done, `[ ]` to do.
 - [ ] Add privacy-friendly analytics
 - [ ] Add a space-themed 404 page ("Lost in space") with a link home
 - [ ] Add skill: `pre-publish`
-- [ ] Rewrite the README for employers, including "How this site was built with AI"
+- [x] Rewrite the README for employers, including "How this site was built with AI"
+- [ ] Add deployment and CI details to the README once they exist
 - [ ] Make the repo public and add a "View source" link to it in the footer
 
 ## Phase 5: Expand the portfolio (ongoing)

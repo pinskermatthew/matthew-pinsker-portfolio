@@ -63,6 +63,7 @@ Run `npm run build` after every change and fix any errors before reporting the t
 9. **Follow the design guide.** Visual changes follow [docs/design.md](docs/design.md). Use the CSS custom properties in `global.css` for colors, fonts, and spacing, and run `npm run contrast` after any color change.
 10. **Keep machine-readable outputs in sync.** The page head, structured data (JSON-LD), `llms.txt`, `llms-full.txt`, and `index.md` are generated from the content files through `src/lib/content.ts`. Never edit their output by hand, and never put a fact in structured data that the visible page doesn't show. Run `npm run check:metadata` after content changes.
 11. **Record decisions.** When a change reflects a meaningful choice (stack, structure, hosting, policy), add an entry to `docs/decisions.md`.
+12. **Keep the README and this file in sync with the repo.** When you add, rename, or remove an npm command, skill, generated output, project doc, or top-level folder, update the matching table in both `README.md` and `CLAUDE.md` in the same change. The README is written for employers, in Matthew's voice; keep its claims about how the site was built accurate.
 
 ## Project skills
 
