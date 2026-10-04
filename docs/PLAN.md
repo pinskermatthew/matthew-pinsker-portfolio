@@ -78,7 +78,7 @@ Hosting: Cloudflare Workers, with preview URLs for every branch; the repo goes p
 - [x] Remove the temporary domain and repo-link exclusions from the link check in `.github/workflows/ci.yml`
 - [x] Add `matthewpinsker.com` as a custom domain on the Worker, redirect `www.matthewpinsker.com` to it with a Cloudflare redirect rule, and confirm HTTPS
 - [x] Turn on Cloudflare Web Analytics: Web Analytics > Add a site > `matthewpinsker.com` (automatic setup), then confirm visits appear
-- [ ] Check the live site: Lighthouse, `check:metadata`, Rich Results Test, and Schema.org validator
+- [x] Check the live site: Lighthouse, `check:metadata`, Rich Results Test, and Schema.org validator
 
 ### Part 4: After launch
 
