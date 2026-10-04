@@ -73,3 +73,19 @@ A log of meaningful project decisions and the reasons for them. Newest last.
 **Decision:** Serve fonts from the site itself with Fontsource packages instead of Google Fonts. Inline the stylesheet into the page and preload the heading font.
 
 **Why:** Self-hosting is faster and doesn't send visitors' data to Google. The optically sized Source Serif 4 file is larger (about 120 KB) than the plain version (about 50 KB), but the plain version made the large headings look wide and heavy. Inlining the small stylesheet and preloading the heading font raised the mobile Lighthouse performance score from 97 to 99.
+
+## 010: Generated machine-readable outputs, open to AI crawlers
+
+**Date:** 2026-10-04
+
+**Decision:** Generate the page metadata, structured data, `llms.txt`, `llms-full.txt`, and a Markdown version of the page from the same content files as the page, through one shared loader. Allow every crawler in `robots.txt`, and list the major AI crawlers by name.
+
+**Why:** The site's goal is to be found and accurately summarized, by people and by AI agents. Generating every output from one source means a content change updates all of them, so search engines and agents never see stale or conflicting facts. Blocking AI crawlers would work against the site's purpose; naming them makes the choice explicit. `npm run check:metadata` verifies the outputs agree.
+
+## 011: No resume PDF
+
+**Date:** 2026-10-04
+
+**Decision:** Don't publish a resume PDF. The experience section and LinkedIn cover the work history.
+
+**Why:** The experience section already shows the companies, titles, and dates, and LinkedIn has the detail. Recruiters who want a resume will ask, and Matthew can send one tailored to the role. A public PDF would be one more document to keep in sync, and one more place for personal contact details on the public web.

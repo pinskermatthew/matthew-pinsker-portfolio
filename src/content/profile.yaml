@@ -10,6 +10,11 @@
     documentation. I partner with engineering, product, and UX teams from
     planning to release, test every workflow I document, and use AI to deliver
     accurate docs faster.
+  # Shown in search results and link previews; written in third person because
+  # it describes the page. Aim for about 140-160 characters.
+  description: >-
+    Matthew Pinsker is a senior technical writer with 7+ years of experience
+    leading developer documentation and building AI-powered docs workflows.
   contactLead: Let's build docs for people and agents.
   links:
     linkedin: https://www.linkedin.com/in/mpinsker/
