@@ -1,6 +1,6 @@
 # Project plan
 
-Goal: a portfolio site and repo that make Matthew a strong technical-writer candidate in an AI-forward market. Target: launch by early November 2026, then keep improving through the job search (6–12 months).
+Goal: a portfolio site and repo that show Matthew's technical writing and AI docs workflow skills. Launch by early November 2026, then keep improving.
 
 Status key: `[x]` done, `[ ]` to do.
 
@@ -67,7 +67,8 @@ Hosting: Cloudflare Workers, with preview URLs for every branch; the repo goes p
 
 ### Part 2: Pre-public review
 
-- [ ] Scan current files and full commit history for personal details, internal employer information, and secrets; Matthew reviews anything flagged
+- [x] Scan current files and full commit history for personal details, internal employer information, and secrets; Matthew reviews anything flagged
+- [x] Keep goal and timeline wording in current docs general (old commits keep the earlier wording)
 
 ### Part 3: Go live
 
@@ -97,9 +98,9 @@ Hosting: Cloudflare Workers, with preview URLs for every branch; the repo goes p
 - [ ] Style guide as a Vale and Claude review skill, with evals
 - [ ] One or two articles on AI-assisted docs workflows
 
-## Phase 6: Job-search upkeep (months 4–12)
+## Phase 6: Ongoing upkeep
 
 - [ ] Monthly content refresh using the project skills
-- [ ] Tailor the headline to the roles being targeted
+- [ ] Tailor the headline as Matthew's focus evolves
 - [ ] Keep LinkedIn consistent with the site
 - [ ] Review Search Console queries and adjust

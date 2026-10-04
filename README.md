@@ -85,3 +85,7 @@ The site runs at http://localhost:4321. Stop the dev server with `npx astro dev 
 ## Built with
 
 [Astro](https://astro.build) with hand-written CSS, self-hosted fonts ([Source Serif 4](https://github.com/adobe-fonts/source-serif), [Inter](https://rsms.me/inter/), and [IBM Plex Mono](https://github.com/IBM/plex) via [Fontsource](https://fontsource.org)), and a little JavaScript for the theme toggle and back-to-top button.
+
+## License
+
+The code, skills, and docs are available under the [MIT License](LICENSE). The site content (the text in `src/content/` and the images in `public/`) is © Matthew Pinsker, all rights reserved.

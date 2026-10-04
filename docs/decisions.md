@@ -24,7 +24,7 @@ A log of meaningful project decisions and the reasons for them. Newest last.
 
 **Decision:** Sample entries describe public product features and Matthew's role in generic terms. They never describe employer-internal processes, tools, people, or metrics.
 
-**Why:** The samples come from Matthew's current employer. Protecting confidential information matters more than a more detailed portfolio, and deeper process detail can be shared in interviews.
+**Why:** The samples come from Matthew's current employer. Protecting confidential information matters more than a more detailed portfolio, and deeper process detail can be shared in conversation.
 
 ## 004: Content in validated YAML
 
@@ -104,4 +104,12 @@ A log of meaningful project decisions and the reasons for them. Newest last.
 
 **Decision:** Use Cloudflare Web Analytics, turned on in the Cloudflare dashboard with automatic setup. Cloudflare adds its script to pages as it serves them; nothing is added to the repo.
 
-**Why:** During a job search, it's useful to know whether people open the site and where they come from, such as LinkedIn or search. Cloudflare Web Analytics is free, uses no cookies (so no cookie banner), and doesn't build visitor profiles or track people across sites. Automatic setup keeps the site's own code at two small scripts (decision 007) and can be turned off with one click. Counts will run low, because ad blockers often block the script; treat them as a rough signal.
+**Why:** It's useful to know whether people open the site and where they come from, such as LinkedIn or search. Cloudflare Web Analytics is free, uses no cookies (so no cookie banner), and doesn't build visitor profiles or track people across sites. Automatic setup keeps the site's own code at two small scripts (decision 007) and can be turned off with one click. Counts will run low, because ad blockers often block the script; treat them as a rough signal.
+
+## 014: MIT for code, all rights reserved for content
+
+**Date:** 2026-10-04
+
+**Decision:** License the code, skills, and docs under MIT. Keep the site content (the text in `src/content/` and the images in `public/`) all rights reserved. The LICENSE file and README both say so.
+
+**Why:** The repo is public so people can see and learn from how the site is built, and reusing the code or the AI workflow is welcome. Matthew's bio, sample descriptions, and personal brand shouldn't be reusable by anyone.
