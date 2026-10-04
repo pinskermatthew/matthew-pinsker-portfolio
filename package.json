@@ -12,7 +12,8 @@
     "preview": "astro preview",
     "images": "bash scripts/generate-images.sh",
     "contrast": "node scripts/check-contrast.mjs",
-    "screenshots": "bash scripts/screenshots.sh"
+    "screenshots": "bash scripts/screenshots.sh",
+    "check:metadata": "node scripts/check-metadata.mjs"
   },
   "dependencies": {
     "@fontsource-variable/inter": "^5.3.0",

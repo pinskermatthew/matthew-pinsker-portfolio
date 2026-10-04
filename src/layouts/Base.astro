@@ -9,9 +9,11 @@ import headingFontUrl from '@fontsource-variable/source-serif-4/files/source-ser
 interface Props {
   title: string;
   description: string;
+  /** JSON-LD for the page, built in src/lib/structured-data.ts. */
+  structuredData?: object;
 }
 
-const { title, description } = Astro.props;
+const { title, description, structuredData } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 
@@ -24,6 +26,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <link rel="preload" href={headingFontUrl} as="font" type="font/woff2" crossorigin />
+    <link rel="alternate" type="text/markdown" href="/index.md" title="This page as Markdown" />
 
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" href="/favicon-32.png" type="image/png" />
@@ -31,6 +34,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 
     <!-- Social share preview. Regenerate the image with `npm run images`. -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="matthewpinsker.com" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:url" content={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -39,6 +44,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content={title} />
     <meta name="twitter:card" content="summary_large_image" />
+
+    {structuredData && <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />}
 
     <script is:inline>
       // Apply a saved theme choice before the page paints, to avoid a flash.

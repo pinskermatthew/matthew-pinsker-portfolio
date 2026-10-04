@@ -12,6 +12,8 @@ const profile = defineCollection({
     name: z.string(),
     headline: z.string(),
     summary: z.string(),
+    // Search result and link preview text. Aim for about 140–160 characters.
+    description: z.string().max(170),
     contactLead: z.string(),
     links: z.object({
       linkedin: z.string().url(),

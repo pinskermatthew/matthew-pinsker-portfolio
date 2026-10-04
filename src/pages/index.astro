@@ -1,18 +1,17 @@
 ---
-import { getCollection, getEntry } from 'astro:content';
 import BackToTop from '../components/BackToTop.astro';
 import ExternalLink from '../components/ExternalLink.astro';
 import ThemeToggle from '../components/ThemeToggle.astro';
 import Base from '../layouts/Base.astro';
+import { getSiteContent } from '../lib/content';
+import { buildStructuredData } from '../lib/structured-data';
 
-const profileEntry = await getEntry('profile', 'matthew');
-if (!profileEntry) throw new Error('Missing profile entry "matthew" in src/content/profile.yaml');
-const profile = profileEntry.data;
-
-const samples = (await getCollection('samples')).sort((a, b) => a.data.order - b.data.order);
+const content = await getSiteContent();
+const { profile, samples, title } = content;
+const structuredData = buildStructuredData(content, Astro.site!);
 ---
 
-<Base title={`${profile.name} | Technical Writer`} description={profile.headline}>
+<Base title={title} description={profile.description} structuredData={structuredData}>
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header id="top" class="site-header">
@@ -47,7 +46,7 @@ const samples = (await getCollection('samples')).sort((a, b) => a.data.order - b
     <section id="work" class="section" aria-labelledby="work-heading">
       <div class="container">
         <h2 id="work-heading">Selected work</h2>
-        {samples.map(({ data }) => (
+        {samples.map((data) => (
           <article class="sample">
             <p class="eyebrow">{data.product}</p>
             <h3><ExternalLink href={data.url}>{data.title}</ExternalLink></h3>

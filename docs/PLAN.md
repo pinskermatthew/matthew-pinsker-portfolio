@@ -21,7 +21,7 @@ Status key: `[x]` done, `[ ]` to do.
 - [x] Set up the content model (`profile.yaml`, `samples.yaml`) with schemas
 - [x] Create the `add-sample` skill
 - [x] Upgrade local Node.js to 22.12 or later, install, and build
-- [ ] Matthew reviews and resolves `TODO(matthew)` items in `src/content/`
+- [x] Matthew reviews and resolves `TODO(matthew)` items in `src/content/`
 
 ## Phase 2: Design and build
 
@@ -41,12 +41,14 @@ Status key: `[x]` done, `[ ]` to do.
 
 ## Phase 3: SEO and AEO
 
-- [ ] `<head>` metadata: description, canonical, Open Graph, Twitter card
-- [ ] JSON-LD: `Person`, `ProfilePage`, and `CreativeWork` for each sample
-- [ ] `robots.txt` that allows search and AI crawlers
-- [ ] `sitemap.xml`
-- [ ] Generated `llms.txt` and `llms-full.txt`, plus a Markdown version of the page
-- [ ] Add skill: `seo-aeo-audit`
+- [x] `<head>` metadata: description, canonical, Open Graph, Twitter card
+- [x] JSON-LD: `Person`, `ProfilePage`, and `CreativeWork` for each sample
+- [x] `robots.txt` that allows search and AI crawlers ([decision 010](decisions.md#010-generated-machine-readable-outputs-open-to-ai-crawlers))
+- [x] `sitemap.xml`
+- [x] Generated `llms.txt` and `llms-full.txt`, plus a Markdown version of the page
+- [x] Add `npm run check:metadata`
+- [x] Matthew approves the page description
+- [x] Add skill: `seo-aeo-audit`
 
 ## Phase 4: Launch
 
@@ -55,12 +57,16 @@ Status key: `[x]` done, `[ ]` to do.
 - [ ] Point `matthewpinsker.com` DNS at the host and enforce HTTPS
 - [ ] Redirect `pinskermatthew.github.io` to the new domain
 - [ ] Set up Google Search Console and Bing Webmaster Tools; submit the sitemap
+- [ ] Align off-site profiles so search engines and AI agents connect them to the site (search for "Matthew Pinsker" mostly returns a historian of the same name):
+  - [ ] LinkedIn: match the site's headline wording, include "technical writer," and link to matthewpinsker.com
+  - [ ] GitHub profile: add "technical writer," a short bio, and the site link
+  - [ ] Add any other public profiles or author pages to `links` in `profile.yaml` so structured data lists them
+  - [ ] After a few weeks, ask an AI assistant with web search "Who is Matthew Pinsker, the technical writer?" and compare the answer with the site
 - [ ] Add privacy-friendly analytics
 - [ ] Add a space-themed 404 page ("Lost in space") with a link home
 - [ ] Add skill: `pre-publish`
 - [ ] Rewrite the README for employers, including "How this site was built with AI"
 - [ ] Make the repo public and add a "View source" link to it in the footer
-- [ ] Add a resume (HTML and PDF)
 
 ## Phase 5: Expand the portfolio (ongoing)
 
