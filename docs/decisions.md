@@ -97,3 +97,11 @@ A log of meaningful project decisions and the reasons for them. Newest last.
 **Decision:** Host the site on Cloudflare Workers as static assets, at `matthewpinsker.com`. Cloudflare Workers Builds deploys every merge to `main` and builds a preview URL for every other branch. GitHub Actions runs the checks on every pull request. The repo goes public before launch.
 
 **Why:** The domain and its DNS are already at Cloudflare, so connecting the domain takes a few clicks. Preview URLs let Matthew review each pull request on a real URL before merging, which GitHub Pages can't do: its default github.io address breaks the site's root-relative paths. Hosting is free for a static site, with unlimited bandwidth, and Cloudflare Web Analytics is available without adding code to the repo. GitHub Pages was considered, to keep code and hosting in one place; it's a good fallback, and moving between them only means changing the deploy setup and DNS.
+
+## 013: Cloudflare Web Analytics with automatic setup
+
+**Date:** 2026-10-04
+
+**Decision:** Use Cloudflare Web Analytics, turned on in the Cloudflare dashboard with automatic setup. Cloudflare adds its script to pages as it serves them; nothing is added to the repo.
+
+**Why:** During a job search, it's useful to know whether people open the site and where they come from, such as LinkedIn or search. Cloudflare Web Analytics is free, uses no cookies (so no cookie banner), and doesn't build visitor profiles or track people across sites. Automatic setup keeps the site's own code at two small scripts (decision 007) and can be turned off with one click. Counts will run low, because ad blockers often block the script; treat them as a rough signal.

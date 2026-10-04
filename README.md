@@ -80,6 +80,7 @@ The site runs at http://localhost:4321. Stop the dev server with `npx astro dev 
 - **Hosting:** [Cloudflare Workers](https://developers.cloudflare.com/workers/static-assets/) serves the built site as static files. The config is in [wrangler.jsonc](wrangler.jsonc).
 - **Deploys:** Cloudflare Workers Builds deploys every merge to `main` to matthewpinsker.com, and builds a preview URL for every other branch, so each pull request can be reviewed on a real URL before merging.
 - **CI:** [GitHub Actions](.github/workflows/ci.yml) runs on every pull request: it builds the site, validates the content, and runs the metadata, contrast, and broken-link checks.
+- **Analytics:** Cloudflare Web Analytics, which uses no cookies and doesn't track visitors across sites. Cloudflare adds its script when serving the site, so it isn't in the code.
 
 ## Built with
 

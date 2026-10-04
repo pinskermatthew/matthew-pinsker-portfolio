@@ -60,7 +60,7 @@ Hosting: Cloudflare Workers, with preview URLs for every branch; the repo goes p
 - [x] CI on every pull request: build, `check:metadata`, contrast, and broken-link check (`.github/workflows/ci.yml`)
 - [x] Add a space-themed 404 page ("Lost in space") with a link home
 - [x] Add a "View source" link to the repo in the footer
-- [ ] Decide on analytics (Cloudflare Web Analytics can be turned on in the dashboard, with no code in the repo)
+- [x] Decide on analytics: Cloudflare Web Analytics, automatic setup ([decision 013](decisions.md#013-cloudflare-web-analytics-with-automatic-setup))
 - [x] Add skill: `pre-publish`
 - [x] Rewrite the README for employers, including "How this site was built with AI"
 - [x] Add deployment and CI details to the README
@@ -75,6 +75,7 @@ Hosting: Cloudflare Workers, with preview URLs for every branch; the repo goes p
 - [ ] In Cloudflare, create the Worker from the GitHub repo (Workers Builds) and confirm the first deploy and a preview URL work
 - [ ] Remove the temporary domain and repo-link exclusions from the link check in `.github/workflows/ci.yml`
 - [ ] Add `matthewpinsker.com` as a custom domain on the Worker, redirect `www.matthewpinsker.com` to it with a Cloudflare redirect rule, and confirm HTTPS
+- [ ] Turn on Cloudflare Web Analytics: Web Analytics > Add a site > `matthewpinsker.com` (automatic setup), then confirm visits appear
 - [ ] Check the live site: Lighthouse, `check:metadata`, Rich Results Test, and Schema.org validator
 
 ### Part 4: After launch

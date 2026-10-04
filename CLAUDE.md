@@ -30,7 +30,7 @@ Run `npm run build` after every change and fix any errors before reporting the t
 
 ## How the site is built
 
-[Astro](https://astro.build) static site, single page, hand-written CSS, and minimal client-side JavaScript (theme toggle and back-to-top button only).
+[Astro](https://astro.build) static site, single page, hand-written CSS, and minimal client-side JavaScript (theme toggle and back-to-top button only). Cloudflare adds its Web Analytics script when it serves the site (decision 013); it isn't in the repo.
 
 | Path | Purpose |
 | --- | --- |
