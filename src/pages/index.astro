@@ -128,7 +128,10 @@ const structuredData = buildStructuredData(content, Astro.site!);
 
   <footer class="site-footer">
     <div class="container">
-      <p class="meta">© {new Date().getFullYear()} {profile.name} · Built with Astro and Claude Code</p>
+      <p class="meta">
+        © {new Date().getFullYear()} {profile.name} · Built with Astro and Claude Code
+        {profile.links.source && <> · <ExternalLink href={profile.links.source}>View source</ExternalLink></>}
+      </p>
     </div>
   </footer>
 

@@ -1,0 +1,13 @@
+// Cloudflare Workers configuration (decision 012). The site is fully static, so
+// there's no Worker code: Cloudflare serves the files Astro builds into dist/.
+// Workers Builds runs `npm run build` and then `npx wrangler deploy` on every
+// push. The Worker name in the Cloudflare dashboard must match `name` below.
+{
+  "name": "matthew-pinsker-portfolio",
+  "compatibility_date": "2026-10-04",
+  "assets": {
+    "directory": "./dist",
+    // Serve dist/404.html, the "Lost in space" page, for unknown URLs.
+    "not_found_handling": "404-page"
+  }
+}

@@ -30,7 +30,7 @@ Run `npm run build` after every change and fix any errors before reporting the t
 
 ## How the site is built
 
-[Astro](https://astro.build) static site, single page, hand-written CSS, and minimal client-side JavaScript (theme toggle and back-to-top button only).
+[Astro](https://astro.build) static site, single page, hand-written CSS, and minimal client-side JavaScript (theme toggle and back-to-top button only). Cloudflare adds its Web Analytics script when it serves the site (decision 013); it isn't in the repo.
 
 | Path | Purpose |
 | --- | --- |
@@ -38,6 +38,7 @@ Run `npm run build` after every change and fix any errors before reporting the t
 | `src/content/samples.yaml` | Writing samples shown in "Selected work" |
 | `src/content.config.ts` | Schemas that validate the YAML at build time |
 | `src/pages/index.astro` | The single page; renders the content files |
+| `src/pages/404.astro` | The "Lost in space" page for unknown URLs (excluded from search) |
 | `src/pages/*.ts` | Generated files for crawlers and agents: `robots.txt`, `sitemap.xml`, `llms.txt`, `llms-full.txt`, and `index.md` |
 | `src/lib/` | Shared content loader (`content.ts`) and the builders for structured data and Markdown outputs |
 | `src/layouts/Base.astro` | HTML document shell and `<head>` metadata |
@@ -47,6 +48,8 @@ Run `npm run build` after every change and fix any errors before reporting the t
 | `scripts/` | Image generation (`generate-images.sh` and its templates in `scripts/images/`), the contrast, metadata, and screenshot checks |
 | `docs/` | Project docs: plan, decisions, writing style guide (`style-guide.md`), and visual design guide (`design.md`) |
 | `.claude/skills/` | Project skills for routine maintenance |
+| `.github/workflows/ci.yml` | CI on every pull request: build, metadata, contrast, and link checks |
+| `wrangler.jsonc` | Cloudflare hosting config. Cloudflare Workers Builds deploys `main` and builds a preview URL for other branches. |
 
 **Content lives in YAML, not templates.** To change what the site says, edit the files in `src/content/`. Edit `.astro` files only to change structure or presentation. Never hard-code facts about Matthew in a template.
 
@@ -55,7 +58,7 @@ Run `npm run build` after every change and fix any errors before reporting the t
 1. **Protect employer confidentiality.** Describe public product features (as stated in public docs) and generic process only. Never describe an employer's internal processes, internal tools, team structure, people, metrics, or unreleased features. If you're unsure whether something is public, leave it out and ask.
 2. **Never invent facts.** Don't make up titles, dates, metrics, employers, testimonials, or skills. If something is missing, add a `TODO(matthew):` comment in the YAML and tell Matthew. Before launch, `grep -rn "TODO(matthew)" src` must return nothing.
 3. **Follow the style guide.** All site copy follows [docs/style-guide.md](docs/style-guide.md).
-4. **Keep it a single page.** Don't add pages or routes without asking. `/work/<sample>` case-study pages may come later (see the plan).
+4. **Keep it a single page.** Don't add pages or routes without asking. The only other page is the 404 page. `/work/<sample>` case-study pages may come later (see the plan).
 5. **Keep it light.** Don't add new client-side JavaScript, UI frameworks, or dependencies without asking. Any script must be progressive enhancement: the page must still read correctly without it.
 6. **Keep it accessible.** Use semantic HTML, one `<h1>`, ordered heading levels, descriptive link text, and WCAG 2.2 AA color contrast in both light and dark mode.
 7. **Use `ExternalLink` for links to other sites.** It opens them in a new tab, adds the ↗ arrow, and tells screen reader users. Use a plain `<a>` for links within the page.
@@ -63,6 +66,7 @@ Run `npm run build` after every change and fix any errors before reporting the t
 9. **Follow the design guide.** Visual changes follow [docs/design.md](docs/design.md). Use the CSS custom properties in `global.css` for colors, fonts, and spacing, and run `npm run contrast` after any color change.
 10. **Keep machine-readable outputs in sync.** The page head, structured data (JSON-LD), `llms.txt`, `llms-full.txt`, and `index.md` are generated from the content files through `src/lib/content.ts`. Never edit their output by hand, and never put a fact in structured data that the visible page doesn't show. Run `npm run check:metadata` after content changes.
 11. **Record decisions.** When a change reflects a meaningful choice (stack, structure, hosting, policy), add an entry to `docs/decisions.md`.
+12. **Keep the README and this file in sync with the repo.** When you add, rename, or remove an npm command, skill, generated output, project doc, or top-level folder, update the matching table in both `README.md` and `CLAUDE.md` in the same change. The README is written for employers, in Matthew's voice; keep its claims about how the site was built accurate.
 
 ## Project skills
 
@@ -73,6 +77,7 @@ Run `npm run build` after every change and fix any errors before reporting the t
 | `update-experience` | Update experience, skills, or summary after a job change or new skill |
 | `update-design` | Change colors, fonts, spacing, layout, or components, and verify the result |
 | `seo-aeo-audit` | Check and fix how search engines and AI agents see the site |
+| `pre-publish` | Run the final checks before a merge to `main`, which publishes the site |
 
 ## Git
 

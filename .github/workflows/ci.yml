@@ -1,0 +1,48 @@
+# Checks every pull request and every push to main. Deployment is separate:
+# Cloudflare Workers Builds builds and publishes the site (decision 012).
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  check:
+    name: Build and check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build and validate content
+        run: npm run build
+
+      - name: Check metadata and agent files
+        run: npm run check:metadata
+
+      - name: Check color contrast
+        run: npm run contrast
+
+      # Checks every link in the built site, including links within the page.
+      # LinkedIn blocks automated requests, so its links are skipped. The site's
+      # own domain and the repo link are skipped until launch, when the domain
+      # goes live and the repo goes public (remove those two lines then).
+      - name: Check links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --no-progress
+            --root-dir "${{ github.workspace }}/dist"
+            --exclude linkedin\.com
+            --exclude ^https://matthewpinsker\.com
+            --exclude github\.com/pinskermatthew/matthew-pinsker-portfolio
+            'dist/**/*.html'
+          fail: true

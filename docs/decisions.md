@@ -24,7 +24,7 @@ A log of meaningful project decisions and the reasons for them. Newest last.
 
 **Decision:** Sample entries describe public product features and Matthew's role in generic terms. They never describe employer-internal processes, tools, people, or metrics.
 
-**Why:** The samples come from Matthew's current employer. Protecting confidential information matters more than a more detailed portfolio, and deeper process detail can be shared in interviews.
+**Why:** The samples come from Matthew's current employer. Protecting confidential information matters more than a more detailed portfolio, and deeper process detail can be shared in conversation.
 
 ## 004: Content in validated YAML
 
@@ -89,3 +89,27 @@ A log of meaningful project decisions and the reasons for them. Newest last.
 **Decision:** Don't publish a resume PDF. The experience section and LinkedIn cover the work history.
 
 **Why:** The experience section already shows the companies, titles, and dates, and LinkedIn has the detail. Recruiters who want a resume will ask, and Matthew can send one tailored to the role. A public PDF would be one more document to keep in sync, and one more place for personal contact details on the public web.
+
+## 012: Host on Cloudflare
+
+**Date:** 2026-10-04
+
+**Decision:** Host the site on Cloudflare Workers as static assets, at `matthewpinsker.com`. Cloudflare Workers Builds deploys every merge to `main` and builds a preview URL for every other branch. GitHub Actions runs the checks on every pull request. The repo goes public before launch.
+
+**Why:** The domain and its DNS are already at Cloudflare, so connecting the domain takes a few clicks. Preview URLs let Matthew review each pull request on a real URL before merging, which GitHub Pages can't do: its default github.io address breaks the site's root-relative paths. Hosting is free for a static site, with unlimited bandwidth, and Cloudflare Web Analytics is available without adding code to the repo. GitHub Pages was considered, to keep code and hosting in one place; it's a good fallback, and moving between them only means changing the deploy setup and DNS.
+
+## 013: Cloudflare Web Analytics with automatic setup
+
+**Date:** 2026-10-04
+
+**Decision:** Use Cloudflare Web Analytics, turned on in the Cloudflare dashboard with automatic setup. Cloudflare adds its script to pages as it serves them; nothing is added to the repo.
+
+**Why:** It's useful to know whether people open the site and where they come from, such as LinkedIn or search. Cloudflare Web Analytics is free, uses no cookies (so no cookie banner), and doesn't build visitor profiles or track people across sites. Automatic setup keeps the site's own code at two small scripts (decision 007) and can be turned off with one click. Counts will run low, because ad blockers often block the script; treat them as a rough signal.
+
+## 014: MIT for code, all rights reserved for content
+
+**Date:** 2026-10-04
+
+**Decision:** License the code, skills, and docs under MIT. Keep the site content (the text in `src/content/` and the images in `public/`) all rights reserved. The LICENSE file and README both say so.
+
+**Why:** The repo is public so people can see and learn from how the site is built, and reusing the code or the AI workflow is welcome. Matthew's bio, sample descriptions, and personal brand shouldn't be reusable by anyone.
