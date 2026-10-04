@@ -32,9 +32,7 @@ jobs:
         run: npm run contrast
 
       # Checks every link in the built site, including links within the page.
-      # LinkedIn blocks automated requests, so its links are skipped. The site's
-      # own domain and the repo link are skipped until launch, when the domain
-      # goes live and the repo goes public (remove those two lines then).
+      # LinkedIn blocks automated requests, so its links are skipped.
       - name: Check links
         uses: lycheeverse/lychee-action@v2
         with:
@@ -42,7 +40,5 @@ jobs:
             --no-progress
             --root-dir "${{ github.workspace }}/dist"
             --exclude linkedin\.com
-            --exclude ^https://matthewpinsker\.com
-            --exclude github\.com/pinskermatthew/matthew-pinsker-portfolio
             'dist/**/*.html'
           fail: true

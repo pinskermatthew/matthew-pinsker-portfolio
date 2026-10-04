@@ -72,11 +72,12 @@ Hosting: Cloudflare Workers, with preview URLs for every branch; the repo goes p
 
 ### Part 3: Go live
 
-- [ ] Merge to `main` and make the repo public
-- [ ] In Cloudflare, create the Worker from the GitHub repo (Workers Builds) and confirm the first deploy and a preview URL work
-- [ ] Remove the temporary domain and repo-link exclusions from the link check in `.github/workflows/ci.yml`
-- [ ] Add `matthewpinsker.com` as a custom domain on the Worker, redirect `www.matthewpinsker.com` to it with a Cloudflare redirect rule, and confirm HTTPS
-- [ ] Turn on Cloudflare Web Analytics: Web Analytics > Add a site > `matthewpinsker.com` (automatic setup), then confirm visits appear
+- [x] Merge to `main` and make the repo public
+- [x] In Cloudflare, create the Worker from the GitHub repo (Workers Builds) and confirm the first deploy works
+- [x] Confirm a pull request gets a working preview URL
+- [x] Remove the temporary domain and repo-link exclusions from the link check in `.github/workflows/ci.yml`
+- [x] Add `matthewpinsker.com` as a custom domain on the Worker, redirect `www.matthewpinsker.com` to it with a Cloudflare redirect rule, and confirm HTTPS
+- [x] Turn on Cloudflare Web Analytics: Web Analytics > Add a site > `matthewpinsker.com` (automatic setup), then confirm visits appear
 - [ ] Check the live site: Lighthouse, `check:metadata`, Rich Results Test, and Schema.org validator
 
 ### Part 4: After launch
