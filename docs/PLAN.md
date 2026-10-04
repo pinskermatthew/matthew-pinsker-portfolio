@@ -82,10 +82,11 @@ Hosting: Cloudflare Workers, with preview URLs for every branch; the repo goes p
 
 ### Part 4: After launch
 
-- [ ] Redirect `pinskermatthew.github.io` to the new domain
-- [ ] Set up Google Search Console and Bing Webmaster Tools; submit the sitemap
+- [x] Redirect `pinskermatthew.github.io` to the new domain (redirect page in the old repo)
+- [x] Google Search Console: verify the domain, submit the sitemap, and request indexing of the home page. Keep the `google-site-verification` TXT record in Cloudflare DNS; deleting it removes verification.
+- [ ] (Optional) Bing Webmaster Tools: import the site from Google Search Console for faster indexing in Bing, DuckDuckGo, Copilot, and ChatGPT search
 - [ ] Align off-site profiles so search engines and AI agents connect them to the site (search for "Matthew Pinsker" mostly returns a historian of the same name):
-  - [ ] LinkedIn: match the site's headline wording, include "technical writer," and link to matthewpinsker.com
+  - [x] LinkedIn: add matthewpinsker.com to contact info
   - [ ] GitHub profile: add "technical writer," a short bio, and the site link
   - [ ] Add any other public profiles or author pages to `links` in `profile.yaml` so structured data lists them
   - [ ] After a few weeks, ask an AI assistant with web search "Who is Matthew Pinsker, the technical writer?" and compare the answer with the site
