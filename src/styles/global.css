@@ -144,8 +144,15 @@ h3 {
 
 p,
 ul,
+ol,
 dl {
   margin: 0;
+}
+
+/* Keep hidden elements hidden even when a class sets `display`, such as the
+   theme toggle before its script runs. */
+[hidden] {
+  display: none !important;
 }
 
 .container {

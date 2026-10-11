@@ -105,7 +105,11 @@ The site is designed phone-first. Test at 360, 768, and 1280px wide, and at a ph
 - Every link and button shows a 2px accent outline on keyboard focus.
 - The first Tab press reveals a "Skip to content" link.
 - Motion is limited to smooth scrolling, the back-to-top fade, the rocket's 2px lift on hover or focus, and the 404 rocket's slow drift. All of it turns off when the visitor prefers reduced motion; the rocket's flame still appears, without movement.
-- Scripts are progressive enhancement: without JavaScript, the page renders fully and follows the system theme.
+- Scripts are progressive enhancement: without JavaScript, the page renders fully and follows the system theme. Elements that need a script start with the `hidden` attribute; the base styles make `hidden` override any `display` a class sets.
+
+## Base styles
+
+`global.css` starts with a small reset instead of a normalize library: border-box sizing, no default margins on `body`, headings, paragraphs, or lists (`ul`, `ol`, `dl`), `hidden` that always hides, and `text-size-adjust: 100%` for iPhones. Add to it only when a new element type needs it.
 
 ## Generated assets
 
