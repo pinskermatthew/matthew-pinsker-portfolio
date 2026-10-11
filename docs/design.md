@@ -51,7 +51,7 @@ All fonts are self-hosted with Fontsource packages.
 
 | Token | Size | Use for |
 | --- | --- | --- |
-| `--text-hero` | 2.75–4.5rem (fluid) | Name only |
+| `--text-hero` | 2.75–4.5rem (fluid: the smaller of 8% of the width or 12% of the height, so phones in landscape get a smaller name) | Name and the 404 heading |
 | `--text-xl` | 1.75rem | Section headings, contact line |
 | `--text-lg` | 1.25rem | Entry titles, approach and skill group headings |
 | `--text-base` | 1.0625rem (17px) | Body text |
@@ -80,7 +80,7 @@ Sample titles use 1.5rem and the headline 1.375rem; these are one-offs, not toke
 
 ### Breakpoints
 
-The site is designed phone-first. Test at 360, 768, and 1280px wide.
+The site is designed phone-first. Test at 360, 768, and 1280px wide, and at a phone in landscape (852 × 393). On iPhones, every browser uses Safari's engine, which enlarges text in landscape unless told not to; `text-size-adjust: 100%` on `html` turns that off.
 
 | Width | What changes |
 | --- | --- |
